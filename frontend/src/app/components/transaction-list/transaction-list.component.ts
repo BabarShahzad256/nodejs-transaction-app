@@ -29,7 +29,9 @@ export class TransactionListComponent implements OnInit {
   getTransactions(): void {
     if (this.transactionForm.valid) {
       const { startDate, endDate } = this.transactionForm.value;
-      this.transactionService.getTransactions(startDate.toISOString(), endDate.toISOString()).subscribe(data => {
+      const startTimestamp = new Date(startDate).getTime();
+      const endTimestamp = new Date(endDate).getTime();
+      this.transactionService.getTransactions(startTimestamp, endTimestamp).subscribe(data => {
         this.transactions = data;
       });
     }

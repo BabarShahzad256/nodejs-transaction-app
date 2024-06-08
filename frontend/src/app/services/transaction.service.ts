@@ -13,7 +13,7 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(startDate: string, endDate: string): Observable<any> {
+  getTransactions(startDate: any, endDate: any): Observable<any> {
     let params = new HttpParams().set('startDate', startDate).set('endDate', endDate);
     return this.http.get<any>(this.baseUrl + this.apiUrl, { params });  
   }
